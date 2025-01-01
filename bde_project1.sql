@@ -66,6 +66,63 @@ group by
 order by
     2 desc
 
+--Tracking subscriptions met with errors using the Funnel Stages by year
+
+with max_status_reach as (
+
+select  
+    psl.subscription_id,
+    max(psl.status_id)  as  max_status
+from 
+    public.payment_status_log psl
+group by
+    1
+)
+,
+payment_funnel_stages as (
+select
+    subs.subscription_id,
+    date_trunc('year', order_date) as order_year,
+    current_payment_status,
+    max_status,
+    case when max_status = 1 then 'Payment Widget Opened'
+        when max_status = 2 then 'Payment Entered'
+        when max_status = 3 and current_payment_status = 0 then 'User Error with Payment Submission'
+        when max_status = 3 and current_payment_status != 0 then 'Payment Submitted'   
+        when max_status = 4 and current_payment_status = 0 then 'Payment Processing Error with Vendor'
+        when max_status = 4 and current_payment_status != 0 then 'Payment Success w/ Vendor' 
+        when max_status = 5 then 'Complete'
+        when max_status  is null then 'User Has Not Started Payment Process'
+        end as payment_funnel_stage
+from 
+    public.subscriptions subs
+left join
+    max_status_reach m
+    on subs.subscription_id = m.subscription_id
+)
+select  
+    payment_funnel_stage,
+    order_year,
+    count(*) as num_subs
+from
+    payment_funnel_stages
+group by
+    1,2
+order by
+    2 desc;
+
+-- added script to convert to stages to percentages w/o year
+SELECT
+    payment_funnel_stage,
+    count(*) as num_subs,
+    round(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (),2) AS percentage
+FROM
+    payment_funnel_stages
+GROUP BY
+    1
+ORDER BY
+    1;
+
 --Percentage of conversion
 
 with max_status_reach as (
@@ -104,3 +161,9 @@ select
     round(num_subs_completed_payment * 100 / num_subs_started_payment,2) as workflow_completion_rate
 from
     payment_funnel_stages
+
+--calculation for conversions
+select  
+    (select count(distinct subscription_id) from public.payment_status_log where status_id= 0) / count(*) as perc_subs_hit_error
+from
+    subscriptions
