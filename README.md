@@ -1,7 +1,4 @@
-# Payment-Funnel-Analysis
-Friction in online payment Process
-#  Analyzing Subscription Payment Funnel & Identifying Conversion Bottlenecks:
-
+# Payment-Funnel-Analysis: Analyzing Subscription Payment Funnel & Identifying Conversion Bottlenecks.
 
 
 #  Executive Summary:
