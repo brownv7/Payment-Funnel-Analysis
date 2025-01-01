@@ -30,7 +30,6 @@ The finance team has noticed that many subscriptions haven't been paid for, so t
 
 -   SQL
     -   CTEs, CASE, subqueries, window functions
-    -   Note: Window functions are in bonus code solution
 -   Data visualization
 -   Data Wrangling
 -   Data Cleaning
