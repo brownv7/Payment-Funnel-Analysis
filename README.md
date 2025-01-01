@@ -44,7 +44,7 @@ The finance team has noticed that many subscriptions haven't been paid for, so t
 
 
 -   **40.7% of subscriptions have no opened the payment portal**
-![image](https://github.com/user-attachments/assets/82e54fa7-d8b0-461f-ab98-02f4ffa8851c)
+
 ![BDE Payment funnel conver2024-12-31 223135](https://github.com/user-attachments/assets/24dd7d29-f360-4f6d-b9df-9d171a238885)
 ![BDE percent_funnel_stage 2024-12-31 224118](https://github.com/user-attachments/assets/55a6ace1-373e-447c-b30d-ee7dcf8e64b8)
 
