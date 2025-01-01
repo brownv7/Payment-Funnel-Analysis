@@ -1,8 +1,6 @@
 # Payment-Funnel-Analysis: Analyzing Subscription Payment Funnel & Identifying Conversion Bottlenecks.
 
 
-#  Executive Summary:
-
 This analysis investigates the reasons behind a significant number of unpaid subscriptions, suggesting potential friction within the online payment process. By leveraging SQL and a data science notebook to construct a product funnel analysis, this project identifies key pain points within the payment portal and provides actionable recommendations to improve the conversion rate of successful payments, ultimately mitigating the negative impact on revenue.
 
 # Methodology:
