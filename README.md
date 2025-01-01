@@ -37,6 +37,8 @@ The finance team has noticed that many subscriptions haven't been paid for, so t
 
 -   **16.95% of subscriptions have hit an error**
 
+![BDE bianry errors 2024-12-31 231939](https://github.com/user-attachments/assets/98068532-2829-455b-8035-b5734b6ba59d)
+
 
 -   **40.7% of subscriptions have no opened the payment portal**
 
